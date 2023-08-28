@@ -13,6 +13,7 @@ runtime macros/matchit.vim
 
 call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
+Plug 'nyoom-engineering/oxocarbon.nvim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'pangloss/vim-javascript'
@@ -154,6 +155,7 @@ set undodir=~/.config/nvim/.backups
 set undofile
 set updatetime=300
 " colorscheme molokai
+colorscheme oxocarbon
 filetype indent on
 filetype plugin on
 syntax on
