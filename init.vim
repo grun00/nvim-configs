@@ -15,6 +15,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 Plug 'mrcjkb/haskell-tools.nvim'
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'nyoom-engineering/oxocarbon.nvim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
@@ -157,7 +159,9 @@ set undodir=~/.config/nvim/.backups
 set undofile
 set updatetime=300
 " colorscheme molokai
-colorscheme oxocarbon
+" colorscheme oxocarbon
+" set background=light
+colorscheme PaperColor
 filetype indent on
 filetype plugin on
 syntax on
