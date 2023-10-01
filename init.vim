@@ -13,6 +13,7 @@ runtime macros/matchit.vim
 
 call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
+Plug 'nvim-neorg/neorg'
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 Plug 'mrcjkb/haskell-tools.nvim'
 Plug 'joukevandermaas/vim-ember-hbs'
@@ -93,8 +94,7 @@ Plug 'yuezk/vim-js'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'branch': 'release/0.x'
-  \ }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 let g:AutoPairsMapCR=0
 let g:deoplete#enable_at_startup = 1
 " <TAB>: completion with deoplete
@@ -281,3 +281,20 @@ EOF
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+lua << EOF
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+                workspaces = {
+                    notes = "~/notes",
+                    work  = "~/work/notes"
+                },
+            },
+        },
+    },
+}
+EOF
