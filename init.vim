@@ -13,12 +13,22 @@ runtime macros/matchit.vim
 
 call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
+"
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'Galooshi/vim-import-js'
+Plug 'sainnhe/everforest'
+Plug 'mxsdev/nvim-dap-vscode-js', { 'do': 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out' }
 Plug 'nvim-neorg/neorg'
 Plug 'theHamsta/nvim_rocks', {'do': 'pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua'}
 Plug 'mrcjkb/haskell-tools.nvim'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'nyoom-engineering/oxocarbon.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'pangloss/vim-javascript'
@@ -158,10 +168,10 @@ set timeout timeoutlen=1500
 set undodir=~/.config/nvim/.backups
 set undofile
 set updatetime=300
-" colorscheme molokai
+colorscheme everforest
 " colorscheme oxocarbon
-" set background=light
-colorscheme PaperColor
+set background=light
+" colorscheme gruvbox
 filetype indent on
 filetype plugin on
 syntax on
@@ -222,15 +232,8 @@ lua << EOF
 EOF
 
 lua << EOF
+require'nvim-web-devicons'.get_icons()
 require'nvim-web-devicons'.setup {
- override = {
-  zsh = {
-    icon = "",
-    color = "#428850",
-    cterm_color = "65",
-    name = "Zsh"
-  }
- };
  color_icons = true;
  default = true;
 }
@@ -282,19 +285,34 @@ EOF
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-lua << EOF
-require('neorg').setup {
-    load = {
-        ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.concealer"] = {}, -- Adds pretty icons to your documents
-        ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-                workspaces = {
-                    notes = "~/notes",
-                    work  = "~/work/notes"
-                },
-            },
-        },
-    },
-}
-EOF
+" lua << EOF
+" require('neorg').setup {
+"     load = {
+"         ["core.defaults"] = {},
+"         ["core.esupports.hop"] = {},
+"         ["core.qol.todo_items"] = {
+"             config = {
+"                 create_todo_items = true
+"               }
+"           },
+"         ["core.journal"] = {
+"           config = {
+"               journal_folder = "journal",
+"               strategy = "flat",
+"               template_name = "template.norg",
+"               use_template = true,
+"               workspace = "notes"
+"             }
+"           },
+"         ["core.dirman"] = {
+"             config = {
+"                 workspaces = {
+"                     notes = "~/notes",
+"                     work  = "~/work/notes",
+"                     tarot = "~/notes/tarot"
+"                 },
+"             },
+"         },
+"     },
+" }
+" EOF
