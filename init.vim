@@ -170,7 +170,7 @@ set undofile
 set updatetime=300
 colorscheme everforest
 " colorscheme oxocarbon
-set background=light
+set background=dark
 " colorscheme gruvbox
 filetype indent on
 filetype plugin on
@@ -278,41 +278,7 @@ lua << EOF
   }
 EOF
 
-lua << EOF
-
-EOF
-
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-" lua << EOF
-" require('neorg').setup {
-"     load = {
-"         ["core.defaults"] = {},
-"         ["core.esupports.hop"] = {},
-"         ["core.qol.todo_items"] = {
-"             config = {
-"                 create_todo_items = true
-"               }
-"           },
-"         ["core.journal"] = {
-"           config = {
-"               journal_folder = "journal",
-"               strategy = "flat",
-"               template_name = "template.norg",
-"               use_template = true,
-"               workspace = "notes"
-"             }
-"           },
-"         ["core.dirman"] = {
-"             config = {
-"                 workspaces = {
-"                     notes = "~/notes",
-"                     work  = "~/work/notes",
-"                     tarot = "~/notes/tarot"
-"                 },
-"             },
-"         },
-"     },
-" }
-" EOF
+let b:copilot_enabled = 'false'
